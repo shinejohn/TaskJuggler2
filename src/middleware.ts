@@ -1,8 +1,17 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(req: NextRequest) {
+  // Temporarily disabled until Supabase environment variables are configured
+  // To enable authentication:
+  // 1. Add your Supabase URL and anon key to .env.local
+  // 2. Uncomment the code below
+  
+  return NextResponse.next()
+  
+  /* 
+  // Uncomment when Supabase is configured:
+  const { createMiddlewareClient } = require('@supabase/auth-helpers-nextjs')
   const res = NextResponse.next()
   const supabase = createMiddlewareClient({ req, res })
 
@@ -38,6 +47,7 @@ export async function middleware(req: NextRequest) {
   }
 
   return res
+  */
 }
 
 export const config = {

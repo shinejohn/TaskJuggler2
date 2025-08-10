@@ -1,3 +1,5 @@
+'use client'
+
 import { createClient } from '@supabase/supabase-js'
 import { Database } from '@/types/database.types'
 
@@ -8,8 +10,6 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
+    detectSessionInUrl: true,
   },
 })
-
-// Re-export any types from Magic Patterns if they exist
-export * from './types-from-magic'
