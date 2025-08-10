@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppLayout } from './Layout/AppLayout';
+import { AppLayout } from './layout/AppLayout';
 import { CheckCircleIcon, ClockIcon, AlertCircleIcon, PlusCircleIcon, ListChecksIcon, FileTextIcon, DollarSignIcon } from 'lucide-react';
 
 interface Task {

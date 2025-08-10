@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { PlusIcon, TrashIcon, CalendarIcon, DollarSignIcon, ClipboardIcon, ArrowDownIcon } from 'lucide-react';
 interface Task {

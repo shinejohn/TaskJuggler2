@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState, Component } from 'react';
 // ... existing code ...
 interface FilterState {
