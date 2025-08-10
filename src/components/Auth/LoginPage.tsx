@@ -1,6 +1,10 @@
+'use client'
+
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { AuthLayout } from './AuthLayout';
 import { Mail, Lock, AlertCircle, Github, Twitter, Facebook, Linkedin } from 'lucide-react';
+import { supabase } from '@/lib/supabase/client';
 interface LoginPageProps {
   onLogin?: () => void;
   redirectAfterLogin?: boolean;
@@ -17,26 +21,38 @@ export function LoginPage({
   onForgotPasswordClick,
   hideLayout = false
 }: LoginPageProps) {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
+    
     try {
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      
+      if (authError) throw authError;
+      
+      // Success! Redirect to dashboard
       if (redirectAfterLogin && redirectParams) {
-        console.log('Logging in with redirect params:', redirectParams);
+        router.push(redirectParams.redirect || '/dashboard');
+      } else {
+        router.push('/dashboard');
       }
+      
       if (onLogin) {
         onLogin();
       }
-    } catch (err) {
-      setError('Invalid email or password. Please try again.');
+    } catch (err: any) {
+      setError(err.message || 'Invalid email or password. Please try again.');
     } finally {
       setLoading(false);
     }

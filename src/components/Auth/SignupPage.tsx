@@ -1,6 +1,10 @@
+'use client'
+
 import React, { useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { AuthLayout } from './AuthLayout';
 import { Mail, Phone, MapPin, User, Lock, Upload, AlertCircle, Github, Twitter, Facebook, Linkedin } from 'lucide-react';
+import { supabase } from '@/lib/supabase/client';
 interface SignupPageProps {
   onSignupComplete?: () => void;
   onLoginClick?: () => void;
@@ -60,27 +64,60 @@ export function SignupPage({
       reader.readAsDataURL(file);
     }
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setErrorMessage('');
+    
     // Basic validation
     if (formData.password !== formData.confirmPassword) {
       setErrorMessage('Passwords do not match');
+      setLoading(false);
       return;
     }
-    if (!profileImage) {
-      setErrorMessage('Please upload a profile image');
-      return;
-    }
-    // Here you would send the data to your backend
-    console.log('Form submitted with:', {
-      ...formData,
-      profileImage
-    });
-    // Call the onSignupComplete callback if provided
-    if (onSignupComplete) {
-      onSignupComplete();
-    } else {
-      alert('Account created successfully! (This is just a demo)');
+    
+    try {
+      // Sign up with Supabase
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            phone: formData.phone,
+            address: formData.address,
+          }
+        }
+      });
+      
+      if (error) throw error;
+      
+      // Create profile in database
+      if (data.user) {
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .insert({
+            id: data.user.id,
+            email: formData.email,
+            phone: formData.phone,
+            address: formData.address,
+          });
+          
+        if (profileError) console.error('Profile creation error:', profileError);
+      }
+      
+      // Success! Redirect to dashboard
+      router.push('/dashboard');
+      
+      if (onSignupComplete) {
+        onSignupComplete();
+      }
+    } catch (err: any) {
+      setErrorMessage(err.message || 'Failed to create account');
+    } finally {
+      setLoading(false);
     }
   };
   const content = <>

@@ -2,15 +2,19 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(req: NextRequest) {
-  // Temporarily disabled until Supabase environment variables are configured
-  // To enable authentication:
-  // 1. Add your Supabase URL and anon key to .env.local
-  // 2. Uncomment the code below
+  // Skip middleware for static files and API routes
+  if (
+    req.nextUrl.pathname.startsWith('/_next') ||
+    req.nextUrl.pathname.startsWith('/api') ||
+    req.nextUrl.pathname.includes('.')
+  ) {
+    return NextResponse.next()
+  }
   
+  // For now, just pass through - auth is handled by AuthProvider
   return NextResponse.next()
   
-  /* 
-  // Uncomment when Supabase is configured:
+  /* TODO: Enable when we need strict route protection
   const { createMiddlewareClient } = require('@supabase/auth-helpers-nextjs')
   const res = NextResponse.next()
   const supabase = createMiddlewareClient({ req, res })
