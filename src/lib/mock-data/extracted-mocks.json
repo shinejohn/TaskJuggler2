@@ -1,0 +1,67 @@
+[
+  {
+    "component": "InviteFriendsPage",
+    "data": "[{\n        name: 'Sarah Johnson',\n        email: 'sarah.j@example.com',\n        phone: '555-123-4567'\n      }, {\n        name: 'Michael Chen',\n        email: 'mchen@example.com',\n        phone: '555-987-6543'\n      }, {\n        name: 'Taylor Williams',\n        email: 'taylor.w@example.com',\n        phone: '555-567-8901'\n      }, {\n        name: 'Jordan Smith',\n        email: 'jsmith@example.com',\n        phone: '555-234-5678'\n      }, {\n        name: 'Alex Rodriguez',\n        email: 'arod@example.com',\n        phone: '555-876-5432'\n      }, {\n        name: 'Jamie Lee',\n        email: 'jamie.lee@example.com',\n        phone: '555-345-6789'\n      }]",
+    "type": "constant"
+  },
+  {
+    "component": "SignupPage",
+    "data": "{\n    email: '',\n    password: '',\n    confirmPassword: '',\n    phone: '',\n    address: {\n      street: '',\n      city: '',\n      state: '',\n      zip: ''\n    }\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "SignupPage",
+    "data": "// Form field placeholders\n{\n  email: 'you@example.com',\n  phone: '(123) 456-7890',\n  address: {\n    street: '123 Main St',\n    city: 'Anytown',\n    state: 'CA',\n    zip: '12345'\n  }\n}",
+    "type": "placeholders"
+  },
+  {
+    "component": "DoerTimeline",
+    "data": "{\n    date: '2023-11-16',\n    time: '12:00'\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "DoerTimeline",
+    "data": "// Demo timeline data\n{\n  activeStep: 1,\n  timelineEditing: false,\n  startDate: '2023-11-15',\n  startTime: '09:00',\n  endDate: '2023-11-17',\n  endTime: '17:00',\n  originalRequest: {\n    date: '2023-11-16',\n    time: '12:00'\n  },\n  taskDetails: {\n    title: 'Website Content Review',\n    description: 'Please review the updated website content and provide feedback on tone, clarity, and accuracy.',\n    requestor: {\n      name: 'John Doe',\n      initials: 'JD',\n      timestamp: 'Today, 10:30 AM'\n    },\n    doer: {\n      name: 'Anna Smith',\n      initials: 'AS'\n    }\n  }\n}",
+    "type": "demo-state"
+  },
+  {
+    "component": "TaskMarketplace",
+    "data": "{\n    // ... existing code ...\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "UserInvoicesPage",
+    "data": "[{\n          id: 'inv-1',\n          invoiceNumber: 'INV-2023-001',\n          issueDate: '2023-11-01',\n          dueDate: '2023-11-15',\n          clientName: 'Sarah Miller',\n          clientId: 'client-1',\n          vendorName: 'Alex Johnson',\n          vendorId: 'vendor-1',\n          items: [{\n            id: 'item-1',\n            description: 'Website Design - Homepage',\n            quantity: 1,\n            rate: 500,\n            amount: 500\n          }, {\n            id: 'item-2',\n            description: 'Website Design - About Page',\n            quantity: 1,\n            rate: 300,\n            amount: 300\n          }],\n          subtotal: 800,\n          serviceFee: 64,\n          serviceFeePercentage: 8,\n          total: 864,\n          notes: 'Thank you for your business!',\n          terms: 'Payment due within 14 days of issue.',\n          status: 'paid',\n          paymentDate: '2023-11-10',\n          paymentMethod: 'Credit Card',\n          taskId: 'task-1',\n          taskTitle: 'Website Redesign Project'\n        }, {\n          id: 'inv-2',\n          invoiceNumber: 'INV-2023-002',\n          issueDate: '2023-11-05',\n          dueDate: '2023-11-19',\n          clientName: 'Sarah Miller',\n          clientId: 'client-1',\n          vendorName: 'Jessica Taylor',\n          vendorId: 'vendor-2',\n          items: [{\n            id: 'item-1',\n            description: 'Content Writing - Product Descriptions',\n            quantity: 10,\n            rate: 50,\n            amount: 500\n          }],\n          subtotal: 500,\n          serviceFee: 40,\n          serviceFeePercentage: 8,\n          total: 540,\n          notes: 'Thank you for your business!',\n          terms: 'Payment due within 14 days of issue.',\n          status: 'pending',\n          taskId: 'task-5',\n          taskTitle: 'Product Catalog Update'\n        }, {\n          id: 'inv-3',\n          invoiceNumber: 'INV-2023-003',\n          issueDate: '2023-11-08',\n          dueDate: '2023-11-22',\n          clientName: 'Sarah Miller',\n          clientId: 'client-1',\n          vendorName: 'Michael Wong',\n          vendorId: 'vendor-3',\n          items: [{\n            id: 'item-1',\n            description: 'Social Media Graphics',\n            quantity: 6,\n            rate: 75,\n            amount: 450\n          }],\n          subtotal: 450,\n          serviceFee: 36,\n          serviceFeePercentage: 8,\n          total: 486,\n          notes: 'Thank you for your business!',\n          terms: 'Payment due within 14 days of issue.',\n          status: 'overdue',\n          taskId: 'task-6',\n          taskTitle: 'Marketing Campaign'\n        }]",
+    "type": "constant"
+  },
+  {
+    "component": "VendorInvoicesPage",
+    "data": "[{\n          id: 'inv-1',\n          invoiceNumber: 'INV-2023-001',\n          issueDate: '2023-11-01',\n          dueDate: '2023-11-15',\n          clientName: 'Sarah Miller',\n          clientId: 'client-1',\n          vendorName: 'Alex Johnson',\n          vendorId: 'vendor-1',\n          items: [{\n            id: 'item-1',\n            description: 'Website Design - Homepage',\n            quantity: 1,\n            rate: 500,\n            amount: 500\n          }, {\n            id: 'item-2',\n            description: 'Website Design - About Page',\n            quantity: 1,\n            rate: 300,\n            amount: 300\n          }],\n          subtotal: 800,\n          serviceFee: 64,\n          serviceFeePercentage: 8,\n          total: 864,\n          vendorAmount: 800,\n          notes: 'Thank you for your business!',\n          terms: 'Payment due within 14 days of issue.',\n          status: 'paid',\n          paymentDate: '2023-11-10',\n          paymentMethod: 'Credit Card',\n          taskId: 'task-1',\n          taskTitle: 'Website Redesign Project'\n        }, {\n          id: 'inv-2',\n          invoiceNumber: 'INV-2023-002',\n          issueDate: '2023-11-05',\n          dueDate: '2023-11-19',\n          clientName: 'John Davis',\n          clientId: 'client-2',\n          vendorName: 'Alex Johnson',\n          vendorId: 'vendor-1',\n          items: [{\n            id: 'item-1',\n            description: 'Logo Design',\n            quantity: 1,\n            rate: 350,\n            amount: 350\n          }],\n          subtotal: 350,\n          serviceFee: 28,\n          serviceFeePercentage: 8,\n          total: 378,\n          vendorAmount: 350,\n          notes: 'Thank you for your business!',\n          terms: 'Payment due within 14 days of issue.',\n          status: 'pending',\n          taskId: 'task-2',\n          taskTitle: 'Brand Identity Design'\n        }, {\n          id: 'inv-3',\n          invoiceNumber: 'INV-2023-003',\n          issueDate: '2023-10-20',\n          dueDate: '2023-11-03',\n          clientName: 'Emily Wilson',\n          clientId: 'client-3',\n          vendorName: 'Alex Johnson',\n          vendorId: 'vendor-1',\n          items: [{\n            id: 'item-1',\n            description: 'Mobile App UI Design',\n            quantity: 1,\n            rate: 1200,\n            amount: 1200\n          }],\n          subtotal: 1200,\n          serviceFee: 96,\n          serviceFeePercentage: 8,\n          total: 1296,\n          vendorAmount: 1200,\n          notes: 'Thank you for your business!',\n          terms: 'Payment due within 14 days of issue.',\n          status: 'overdue',\n          taskId: 'task-3',\n          taskTitle: 'Fitness App Design'\n        }]",
+    "type": "constant"
+  },
+  {
+    "component": "PaymentMethodSetup",
+    "data": "{\n    number: '',\n    name: '',\n    expiry: '',\n    cvc: ''\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "PaymentMethodSetup",
+    "data": "{\n    accountName: '',\n    accountNumber: '',\n    routingNumber: '',\n    accountType: 'checking'\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "PaymentMethodSetup",
+    "data": "{\n    line1: '',\n    line2: '',\n    city: '',\n    state: '',\n    postalCode: '',\n    country: 'US'\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "SubmitReviewForm",
+    "data": "{\n    quality: 0,\n    communication: 0,\n    timeliness: 0,\n    value: 0\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "TaskReport",
+    "data": "[{\n  id: 1,\n  title: 'Review Q4 Marketing Strategy',\n  description: 'Review and provide feedback on the Q4 marketing strategy document',\n  status: 'completed',\n  progress: 100,\n  priority: 'high',\n  assignee: {\n    name: 'Alex Johnson',\n    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',\n    email: 'alex@example.com'\n  },\n  created: '2023-11-15T14:30:00',\n  startDate: '2023-11-16',\n  dueDate: '2023-11-18',\n  completedDate: '2023-11-17',\n  paymentStatus: 'paid',\n  statusUpdates: [{\n    id: 1,\n    date: '2023-11-16T10:15:00',\n    status: 'in-progress',\n    progress: 50,\n    note: 'Started reviewing the marketing strategy. Initial feedback drafted for the first three sections.',\n    updatedBy: 'Alex Johnson'\n  }, {\n    id: 2,\n    date: '2023-11-17T14:30:00',\n    status: 'completed',\n    progress: 100,\n    note: 'Completed the review with detailed feedback. All sections covered with suggestions for improvement.',\n    updatedBy: 'Alex Johnson'\n  }]",
+    "type": "constant"
+  }
+]

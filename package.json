@@ -6,19 +6,35 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "types": "npx supabase gen types typescript --project-id YOUR_PROJECT_ID > src/types/database.types.ts",
+    "scan": "node scripts/scan-components.js",
+    "extract-mocks": "node scripts/process-mock-data.js",
+    "generate-types": "node scripts/generate-type-mappings.js",
+    "generate-queries": "node scripts/generate-queries.js",
+    "generate-hooks": "node scripts/generate-hooks.js",
+    "generate-routes": "node scripts/generate-routes.js",
+    "update-components": "node scripts/update-components.js",
+    "seed": "tsx scripts/seed-all.ts",
+    "integrate": "npm run scan && npm run extract-mocks && npm run generate-queries && npm run generate-hooks && npm run generate-routes"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/auth-helpers-react": "^0.5.0",
+    "@supabase/supabase-js": "^2.54.0",
+    "@tanstack/react-query": "^5.84.2",
+    "@tanstack/react-query-devtools": "^5.84.2",
+    "lucide-react": "^0.441.0",
+    "next": "15.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.4.6"
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20.19.10",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
