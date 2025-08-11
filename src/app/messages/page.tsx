@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
 import { Messaging } from '@/components/Messaging'
+import { ClientAppLayout } from '@/components/layout/ClientAppLayout'
 import { getMessagesByUser } from '@/lib/supabase/queries/messages.queries'
 import { createServerClient } from '@/lib/supabase/server'
 
@@ -20,11 +21,13 @@ export default async function MessagesPage() {
   }
   
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Messaging 
-        onSelectConversation={(id) => console.log('Selected conversation:', id)}
-        onNewMessage={() => console.log('New message')}
-      />
-    </Suspense>
+    <ClientAppLayout>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Messaging 
+          onSelectConversation={(id) => console.log('Selected conversation:', id)}
+          onNewMessage={() => console.log('New message')}
+        />
+      </Suspense>
+    </ClientAppLayout>
   )
 }

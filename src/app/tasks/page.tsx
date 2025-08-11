@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
 import { TaskReport } from '@/components/TaskReport'
+import { ClientAppLayout } from '@/components/layout/ClientAppLayout'
 import { createServerClient } from '@/lib/supabase/server'
 
 export default async function TasksPage() {
@@ -12,8 +13,10 @@ export default async function TasksPage() {
   }
   
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <TaskReport userId={user.id} />
-    </Suspense>
+    <ClientAppLayout>
+      <Suspense fallback={<div>Loading...</div>}>
+        <TaskReport userId={user.id} />
+      </Suspense>
+    </ClientAppLayout>
   )
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Clock, DollarSign, Calendar, MapPin, FileText, Briefcase, CheckSquare, AlertCircle, PaperclipIcon, XIcon, Star, Users, Filter, Home } from 'lucide-react';
 type TaskCategory = 'household' | 'errands' | 'professional' | 'technical' | 'creative' | 'education' | 'health' | 'other';

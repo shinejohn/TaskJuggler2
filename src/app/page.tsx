@@ -33,12 +33,14 @@ export default function HomePage() {
         onLogoClick={() => router.push('/')}
       />
       
-      <Hero onGetStartedClick={handleGetStarted} />
-      <Features />
-      <HowItWorks />
-      <UseCases />
-      <Testimonials />
-      <CTA onGetStartedClick={handleGetStarted} />
+      <main>
+        <Hero onGetStartedClick={handleGetStarted} />
+        <Features />
+        <HowItWorks />
+        <UseCases />
+        <Testimonials />
+        <CTA onGetStartedClick={handleGetStarted} />
+      </main>
       
       <Footer />
     </div>

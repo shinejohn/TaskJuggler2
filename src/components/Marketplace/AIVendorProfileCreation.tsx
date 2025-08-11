@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useRef } from 'react';
 import { Upload, Plus, Trash2, DollarSign, Check, Clock, Award, Code, Globe, Briefcase, Mail, Phone, ExternalLink, Info, AlertCircle, Zap, Database, Server, Shield, Cpu, Bot, FileText, MessageSquare, Terminal, Key } from 'lucide-react';
 interface AICapability {

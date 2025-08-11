@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useRef } from 'react';
 import { Upload, Plus, Trash2, DollarSign, Check, Clock, Award, MapPin, Globe, Briefcase, Mail, Phone, ExternalLink, Info, AlertCircle } from 'lucide-react';
 interface ServiceForm {

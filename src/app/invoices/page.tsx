@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
 import { Invoice } from '@/components/Invoice'
+import { ClientAppLayout } from '@/components/layout/ClientAppLayout'
 import { getInvoicesByUser } from '@/lib/supabase/queries/invoices.queries'
 import { createServerClient } from '@/lib/supabase/server'
 
@@ -35,12 +36,14 @@ export default async function InvoicesPage() {
   }))
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Invoice 
-        invoices={invoices}
-        userType="client"
-        onViewInvoice={(id) => console.log('View invoice', id)}
-      />
-    </Suspense>
+    <ClientAppLayout>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Invoice 
+          invoices={invoices}
+          userType="client"
+          onViewInvoice={(id) => console.log('View invoice', id)}
+        />
+      </Suspense>
+    </ClientAppLayout>
   )
 }
