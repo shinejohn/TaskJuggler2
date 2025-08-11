@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, Calendar as CalendarIcon, Briefcase, FileText, Clock, DollarSign, Star, CheckCircle, AlertTriangle, Users, PlusCircle, MessageSquare, ChevronRight, Filter, Search, Bell, Settings, MoreHorizontal, ChevronDown, User, ArrowUpRight, X, Check, Edit, Calendar, ExternalLink } from 'lucide-react';
+import { LayoutDashboard, Calendar as CalendarIcon, Briefcase, FileText, Clock, DollarSign, Star, CheckCircle, AlertTriangle, Users, PlusCircle, MessageSquare, ChevronRight, ChevronLeft, Filter, Search, Bell, Settings, MoreHorizontal, ChevronDown, User, ArrowUpRight, X, Check, Edit, Calendar, ExternalLink } from 'lucide-react';
 type TaskStatus = 'pending-start' | 'in-progress' | 'in-review' | 'completed' | 'cancelled';
 type ProposalStatus = 'pending' | 'accepted' | 'rejected' | 'withdrawn';
 interface Task {

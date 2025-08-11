@@ -1,6 +1,12 @@
 'use client';
 
 import React, { useEffect, useState, Component } from 'react';
+
+// Type definitions
+type TaskProviderType = 'individual' | 'business' | 'volunteer';
+type UrgencyLevel = 'low' | 'medium' | 'high' | 'urgent';
+type ProposalSortOption = 'newest' | 'price-low' | 'price-high' | 'rating';
+
 // ... existing code ...
 interface FilterState {
   categories: string[];

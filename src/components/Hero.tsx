@@ -5,7 +5,7 @@ interface HeroProps {
 }
 export function Hero({
   onGetStartedClick
-} = {}) {
+}: HeroProps = {}) {
   return <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">

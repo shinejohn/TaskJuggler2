@@ -1,6 +1,6 @@
 import React from 'react';
 import { VendorProfileCreation } from './VendorProfileCreation';
-import { AppLayout } from '../Layout/AppLayout';
+import { AppLayout } from '../layout/AppLayout';
 interface VendorProfileCreationPageProps {
   onCreateTaskClick?: () => void;
   onTaskReportClick?: () => void;

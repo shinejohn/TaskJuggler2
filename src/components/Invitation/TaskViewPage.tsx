@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { TrackingParams } from './TaskInvitationPage';
-import { AppLayout } from '../Layout/AppLayout';
+import { AppLayout } from '../layout/AppLayout';
 import { CalendarIcon, ClockIcon, AlertCircleIcon, UserIcon, MessageSquareIcon, PaperclipIcon, FileTextIcon } from 'lucide-react';
 interface TaskViewPageProps {
   trackingParams: TrackingParams;

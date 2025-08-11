@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppLayout } from '../Layout/AppLayout';
+import { AppLayout } from '../layout/AppLayout';
 import { InvoiceList } from '../Invoice/InvoiceList';
 import { InvoiceDetail } from '../Invoice/InvoiceDetail';
 interface VendorInvoicesPageProps {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TaskChat } from './TaskChat';
-import { AppLayout } from '../Layout/AppLayout';
+import { AppLayout } from '../layout/AppLayout';
 interface TaskChatPageProps {
   onCreateTaskClick?: () => void;
   onTaskReportClick?: () => void;

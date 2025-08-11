@@ -9,7 +9,7 @@ export function Header({
   onCreateTaskClick,
   onLogoClick,
   onLoginClick
-} = {}) {
+}: HeaderProps = {}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleGetStartedClick = () => {
     if (onCreateTaskClick) {

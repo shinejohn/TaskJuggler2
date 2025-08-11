@@ -5,7 +5,7 @@ interface CTAProps {
 }
 export function CTA({
   onGetStartedClick
-} = {}) {
+}: CTAProps = {}) {
   return <section className="py-16 md:py-24 bg-blue-600 text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppLayout } from '../Layout/AppLayout';
+import { AppLayout } from '../layout/AppLayout';
 import { Calendar, Clock, CheckCircle, ArrowRight, ChevronLeft } from 'lucide-react';
 interface TaskTimelinePageProps {
   taskId: string;

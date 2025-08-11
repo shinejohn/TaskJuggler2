@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { TrackingParams } from './TaskInvitationPage';
-import { AppLayout } from '../Layout/AppLayout';
+import { AppLayout } from '../layout/AppLayout';
 import { CheckCircle, X, Calendar, Clock, MessageSquare, ArrowRight, ChevronLeft } from 'lucide-react';
 interface TaskResponsePageProps {
   response: 'accept' | 'reject';

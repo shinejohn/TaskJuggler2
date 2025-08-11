@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppLayout } from '../Layout/AppLayout';
+import { AppLayout } from '../layout/AppLayout';
 import { UserIcon, CalendarIcon, ClockIcon, AlertCircleIcon, PaperclipIcon, MapPinIcon, PhoneIcon, MailIcon, InfoIcon, SendIcon, MessageSquareIcon, CheckCircleIcon, EditIcon, TrashIcon, FileTextIcon, ArrowLeftIcon, CheckIcon, XIcon, ExternalLinkIcon, PlusCircleIcon } from 'lucide-react';
 type Priority = 'low' | 'medium' | 'high';
 type AssignmentOption = 'friend' | 'invite' | 'marketplace-post' | 'marketplace-browse' | 'self';

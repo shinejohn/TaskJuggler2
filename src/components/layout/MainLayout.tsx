@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { EnhancedHeader } from '../Navigation/EnhancedHeader';
 import { Footer } from '../Footer';
 interface MainLayoutProps {

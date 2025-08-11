@@ -1,6 +1,6 @@
 import React from 'react';
 import { TaskReport } from './TaskReport';
-import { AppLayout } from './Layout/AppLayout';
+import { AppLayout } from './layout/AppLayout';
 interface TaskReportPageProps {
   onCreateTaskClick?: () => void;
   onTaskReportClick?: () => void;

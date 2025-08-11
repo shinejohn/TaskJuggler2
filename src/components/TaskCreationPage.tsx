@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppLayout } from './Layout/AppLayout';
+import { AppLayout } from './layout/AppLayout';
 import { TaskCreator } from './TaskCreator';
 interface TaskCreationPageProps {
   onCreateTaskClick?: () => void;
