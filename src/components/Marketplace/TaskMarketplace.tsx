@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useEffect, useState, Component } from 'react';
+import { MapPin, Map as MapIcon, Search, Filter, ChevronDown, User, Bot } from 'lucide-react';
 
 // Type definitions
-type TaskProviderType = 'individual' | 'business' | 'volunteer';
-type UrgencyLevel = 'low' | 'medium' | 'high' | 'urgent';
+type TaskProviderType = 'human-only' | 'ai-capable' | 'both';
+type UrgencyLevel = 'low' | 'medium' | 'high' | 'urgent' | 'soon' | 'flexible';
 type ProposalSortOption = 'newest' | 'price-low' | 'price-high' | 'rating';
 
 // ... existing code ...
@@ -21,6 +22,74 @@ interface FilterState {
 }
 type SortOption = 'newest' | 'deadline' | 'price-high' | 'price-low' | 'distance';
 // ... existing code ...
+
+// Mock data for tasks
+const tasks = [
+  {
+    id: '1',
+    title: 'Fix website bugs',
+    description: 'Need help fixing responsive issues on my website',
+    category: 'Web Development',
+    price: 150,
+    type: 'paid' as const,
+    location: 'remote' as const,
+    coordinates: null as [number, number] | null,
+    deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+    postedDate: new Date().toISOString(),
+    skills: ['HTML', 'CSS', 'JavaScript'],
+    providerType: 'human-only' as const,
+    urgency: 'medium' as const
+  },
+  {
+    id: '2',
+    title: 'Create logo design',
+    description: 'Looking for a modern logo for my startup',
+    category: 'Design',
+    price: 300,
+    type: 'paid' as const,
+    location: 'remote' as const,
+    coordinates: null as [number, number] | null,
+    deadline: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+    postedDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    skills: ['Logo Design', 'Branding', 'Adobe Illustrator'],
+    providerType: 'both' as const,
+    urgency: 'low' as const
+  },
+  {
+    id: '3',
+    title: 'Move furniture',
+    description: 'Need help moving heavy furniture to new apartment',
+    category: 'Physical Labor',
+    price: 100,
+    type: 'paid' as const,
+    location: 'in-person' as const,
+    coordinates: [47.6062, -122.3321] as [number, number],
+    deadline: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
+    postedDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+    skills: ['Physical Strength', 'Moving Experience'],
+    providerType: 'human-only' as const,
+    urgency: 'high' as const
+  },
+  {
+    id: '4',
+    title: 'Tutoring for high school math',
+    description: 'My son needs help with calculus homework',
+    category: 'Education',
+    price: null,
+    type: 'unpaid' as const,
+    location: 'remote' as const,
+    coordinates: null as [number, number] | null,
+    deadline: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString(),
+    postedDate: new Date().toISOString(),
+    skills: ['Calculus', 'Teaching', 'Patience'],
+    providerType: 'both' as const,
+    urgency: 'medium' as const
+  }
+];
+
+// Categories derived from tasks
+const categories = Array.from(new Set(tasks.map(task => task.category)));
+
 export function TaskMarketplace() {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
@@ -235,6 +304,38 @@ export function TaskMarketplace() {
         return 0;
     }
   });
+  // Helper functions
+  const handleCategoryToggle = (category: string) => {
+    setFilters(prev => ({
+      ...prev,
+      categories: prev.categories.includes(category)
+        ? prev.categories.filter(c => c !== category)
+        : [...prev.categories, category]
+    }));
+  };
+
+  const resetFilters = () => {
+    setFilters({
+      categories: [],
+      priceRange: [0, 10000],
+      location: filters.location, // Keep location
+      coordinates: filters.coordinates, // Keep coordinates
+      radius: 25,
+      deadlineAfter: null,
+      deadlineBefore: null,
+      providerType: 'all',
+      urgency: 'all'
+    });
+  };
+
+  const daysUntilDeadline = (deadline: string): number => {
+    const deadlineDate = new Date(deadline);
+    const now = new Date();
+    const diffTime = deadlineDate.getTime() - now.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  };
+
   // ... existing code ...
   // Location Modal Component
   const LocationModal = () => {

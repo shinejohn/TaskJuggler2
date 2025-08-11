@@ -21,7 +21,7 @@ export function TaskCreationPage({
 }: TaskCreationPageProps) {
   return <AppLayout onCreateTaskClick={onCreateTaskClick} onTaskReportClick={onTaskReportClick} onChatClick={onChatClick} onProfileClick={onProfileClick} onHomeClick={onHomeClick} onLogoutClick={onLogoutClick}>
       <div className="py-8 px-4 sm:px-6 lg:px-8">
-        <TaskCreator onTaskCreated={onTaskCreated} />
+        <TaskCreator />
       </div>
     </AppLayout>;
 }

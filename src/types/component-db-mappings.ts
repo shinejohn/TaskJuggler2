@@ -21,7 +21,7 @@ export function mapTaskToComponent(task: TaskFromDB) {
     title: task.title,
     description: task.description || '',
     status: task.status,
-    createdAt: new Date(task.created_at),
+    createdAt: task.created_at ? new Date(task.created_at) : new Date(),
     // Map other fields as needed
   }
 }
@@ -30,8 +30,8 @@ export function mapUserToComponent(user: UserFromDB, profile?: ProfileFromDB) {
   return {
     id: user.id,
     email: user.email,
-    name: profile?.full_name || 'Anonymous',
-    avatar: profile?.avatar_url,
+    name: user.full_name || 'Anonymous',
+    avatar: user.avatar_url,
     // Map other fields as needed
   }
 }

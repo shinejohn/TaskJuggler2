@@ -14,7 +14,7 @@ export function SignupTaskCreationPage({
     onLoginClick={() => window.location.href = '/login'} // Navigate to login
     />
       <div className="pt-24 pb-16">
-        <TaskCreator isSignupFlow={true} onTaskCreated={onTaskCreated} />
+        <TaskCreator isSignupFlow={true} />
       </div>
       <Footer />
     </div>;

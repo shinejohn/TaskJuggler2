@@ -53,8 +53,8 @@ export function ProfilePage({
   // Mock subscription data
   const subscriptionData = {
     plan: 'Personal Pro',
-    status: 'active',
-    billingPeriod: 'monthly',
+    status: 'active' as const,
+    billingPeriod: 'monthly' as const,
     price: 8,
     nextBillingDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toLocaleDateString(),
     paymentMethod: {
@@ -67,17 +67,17 @@ export function ProfilePage({
       id: 'INV-001',
       date: '2023-06-15',
       amount: 8,
-      status: 'paid'
+      status: 'paid' as const
     }, {
       id: 'INV-002',
       date: '2023-07-15',
       amount: 8,
-      status: 'paid'
+      status: 'paid' as const
     }, {
       id: 'INV-003',
       date: '2023-08-15',
       amount: 8,
-      status: 'paid'
+      status: 'paid' as const
     }]
   };
   return <AppLayout onCreateTaskClick={onCreateTaskClick} onTaskReportClick={onTaskReportClick} onChatClick={onChatClick} onProfileClick={onProfileClick} onHomeClick={onHomeClick} onLogoutClick={onLogoutClick}>

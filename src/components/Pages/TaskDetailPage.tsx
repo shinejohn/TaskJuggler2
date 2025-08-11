@@ -546,13 +546,7 @@ export function TaskDetailPage({
       <html>
         <head>
           <title>Task Details - ${task.id}</title>
-          <style>{`;
-    $;
-    {
-      styles;
-    }
-    ;
-    `}</style>
+          <style>${styles}</style>
         </head>
         <body>
           <h1>${task.title}</h1>

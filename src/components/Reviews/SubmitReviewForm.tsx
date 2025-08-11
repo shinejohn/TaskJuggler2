@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Upload, Check, AlertCircle, Info } from 'lucide-react';
+import { Star, Upload, Check, AlertCircle, Info, X } from 'lucide-react';
 interface SubmitReviewFormProps {
   providerName: string;
   providerImage: string;

@@ -17,7 +17,7 @@ export function MyTasksViewer() {
     title: task.title,
     description: task.description || '',
     status: task.status as any,
-    dueDate: task.due_date || '',
+    dueDate: task.expected_completion || '',
     // TODO: Add proper user/vendor relationships
     doerName: 'User',
     clientName: 'Client',

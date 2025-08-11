@@ -272,7 +272,7 @@ interface StatusUpdate {
   note: string;
   updatedBy: string;
 }
-interface Task {
+interface DetailedTask {
   id: number;
   title: string;
   description: string;
@@ -375,7 +375,7 @@ const PriorityBadge: React.FC<PriorityBadgeProps> = ({
     </span>;
 };
 interface StatusUpdateModalProps {
-  task: Task | null;
+  task: DetailedTask | null;
   onClose: () => void;
   onRequestUpdate: (taskId: number) => void;
 }
@@ -578,11 +578,12 @@ export function TaskReport({
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<TaskStatus | 'all'>('all');
   const [priorityFilter, setPriorityFilter] = useState<TaskPriority | 'all'>('all');
-  const [sortField, setSortField] = useState<keyof Task>('created');
+  const [sortField, setSortField] = useState<keyof DetailedTask>('created');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
-  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  const [selectedTask, setSelectedTask] = useState<DetailedTask | null>(null);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+  const [selectedTaskIds, setSelectedTaskIds] = useState<string[]>([]);
   // New state for the dashboard filters
   const [activeFilter, setActiveFilter] = useState<'open' | 'completed' | 'high-priority' | null>(null);
   // Count tasks for dashboard
@@ -643,7 +644,7 @@ export function TaskReport({
     }
   };
   // Open status update modal
-  const openStatusUpdateModal = (task: Task) => {
+  const openStatusUpdateModal = (task: DetailedTask) => {
     setSelectedTask(task);
     setIsUpdateModalOpen(true);
   };
@@ -655,6 +656,24 @@ export function TaskReport({
   // Request a status update
   const requestStatusUpdate = (taskId: number) => {
     alert(`Status update requested for task #${taskId}. In a real application, this would send a notification to the assignee.`);
+  };
+  
+  // Handle task selection
+  const handleTaskSelect = (taskId: string) => {
+    setSelectedTaskIds(prev =>
+      prev.includes(taskId)
+        ? prev.filter(id => id !== taskId)
+        : [...prev, taskId]
+    );
+  };
+  
+  // Handle select all
+  const handleSelectAll = () => {
+    if (selectedTaskIds.length === filteredAndSortedTasks.length) {
+      setSelectedTaskIds([]);
+    } else {
+      setSelectedTaskIds(filteredAndSortedTasks.map(task => task.id.toString()));
+    }
   };
   // Filter and sort tasks
   const filteredAndSortedTasks = tasks.filter(task => {
@@ -680,8 +699,8 @@ export function TaskReport({
   }).sort((a, b) => {
     // Special handling for date fields
     if (['created', 'startDate', 'dueDate', 'completedDate'].includes(sortField)) {
-      const dateA = a[sortField as keyof Task] ? new Date(a[sortField as keyof Task] as string).getTime() : 0;
-      const dateB = b[sortField as keyof Task] ? new Date(b[sortField as keyof Task] as string).getTime() : 0;
+      const dateA = a[sortField as keyof DetailedTask] ? new Date(a[sortField as keyof DetailedTask] as string).getTime() : 0;
+      const dateB = b[sortField as keyof DetailedTask] ? new Date(b[sortField as keyof DetailedTask] as string).getTime() : 0;
       return sortDirection === 'asc' ? dateA - dateB : dateB - dateA;
     }
     // Handle progress as a number
@@ -689,8 +708,8 @@ export function TaskReport({
       return sortDirection === 'asc' ? a.progress - b.progress : b.progress - a.progress;
     }
     // Default string comparison
-    const valueA = String(a[sortField as keyof Task]).toLowerCase();
-    const valueB = String(b[sortField as keyof Task]).toLowerCase();
+    const valueA = String(a[sortField as keyof DetailedTask]).toLowerCase();
+    const valueB = String(b[sortField as keyof DetailedTask]).toLowerCase();
     return sortDirection === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
   });
   // Reset all filters
@@ -721,12 +740,12 @@ export function TaskReport({
             </button>
           </div>
         </div>}
-      {filteredTasks.length > 0 ? <div className="overflow-x-auto">
+      {filteredAndSortedTasks.length > 0 ? <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
                 <th scope="col" className="px-6 py-3 text-left">
-                  <input type="checkbox" className="h-4 w-4 text-blue-600 border-gray-300 rounded" checked={selectedTaskIds.length === filteredTasks.length && filteredTasks.length > 0} onChange={handleSelectAll} />
+                  <input type="checkbox" className="h-4 w-4 text-blue-600 border-gray-300 rounded" checked={selectedTaskIds.length === filteredAndSortedTasks.length && filteredAndSortedTasks.length > 0} onChange={handleSelectAll} />
                 </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer" onClick={() => handleSort('title')}>
                   <div className="flex items-center">
@@ -779,7 +798,7 @@ export function TaskReport({
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {filteredTasks.map(task => <tr key={task.id} className="hover:bg-gray-50">
+              {filteredAndSortedTasks.map(task => <tr key={task.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       <input type="checkbox" className="h-4 w-4 text-blue-600 border-gray-300 rounded" checked={selectedTaskIds.includes(task.id.toString())} onChange={() => handleTaskSelect(task.id.toString())} onClick={e => e.stopPropagation()} />
