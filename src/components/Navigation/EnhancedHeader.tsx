@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState, useRef } from 'react';
 import { Menu, X, Bell, User, Users, LogOut, Settings, HelpCircle, ChevronDown, Search, MessageSquare, Home, ListChecks, PlusCircle, Calendar, Briefcase, Star, DollarSign } from 'lucide-react';
 interface EnhancedHeaderProps {

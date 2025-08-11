@@ -1,7 +1,9 @@
+'use client'
+
 import React, { useEffect, useState } from 'react';
 import { AuthLayout } from './AuthLayout';
 import { Mail, Phone, Book, Users, Plus, X, CheckCircle, ArrowRight, Sparkles, Loader, Copy, Share2, Upload, Gift, CheckIcon, Clock, MessageCircle, Facebook, Twitter, Smartphone, Link as LinkIcon } from 'lucide-react';
-import confetti from 'canvas-confetti';
+// import confetti from 'canvas-confetti';
 interface Contact {
   name?: string;
   email?: string;
@@ -82,24 +84,24 @@ export function InviteFriendsPage({
         }
         const particleCount = 50 * (timeLeft / duration);
         // since particles fall down, start a bit higher than random
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: {
-            x: randomInRange(0.1, 0.3),
-            y: Math.random() - 0.2
-          },
-          colors: ['#FF6B6B', '#4ECDC4', '#FFD166']
-        });
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: {
-            x: randomInRange(0.7, 0.9),
-            y: Math.random() - 0.2
-          },
-          colors: ['#06D6A0', '#118AB2', '#073B4C']
-        });
+        // confetti({
+        //   ...defaults,
+        //   particleCount,
+        //   origin: {
+        //     x: randomInRange(0.1, 0.3),
+        //     y: Math.random() - 0.2
+        //   },
+        //   colors: ['#FF6B6B', '#4ECDC4', '#FFD166']
+        // });
+        // confetti({
+        //   ...defaults,
+        //   particleCount,
+        //   origin: {
+        //     x: randomInRange(0.7, 0.9),
+        //     y: Math.random() - 0.2
+        //   },
+        //   colors: ['#06D6A0', '#118AB2', '#073B4C']
+        // });
       }, 250);
       return () => clearInterval(interval);
     }

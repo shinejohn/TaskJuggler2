@@ -1,5 +1,7 @@
+'use client'
+
 import React, { useState } from 'react';
-import { AppLayout } from '../Layout/AppLayout';
+import { AppLayout } from '../layout/AppLayout';
 import { VendorProfile } from './VendorProfile';
 interface VendorProfilePageProps {
   onCreateTaskClick?: () => void;

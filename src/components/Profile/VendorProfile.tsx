@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Star, Clock, Calendar, DollarSign, MessageCircle, ChevronDown, ChevronUp, Award, Check, User, Bot, Server, MapPin, Globe, Briefcase, Phone, Mail, ExternalLink, Edit, Plus, Eye, Settings, AlertCircle } from 'lucide-react';
 interface Review {
