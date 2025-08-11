@@ -5,7 +5,7 @@ import { UserInfoSection } from './UserInfoSection';
 import { SubscriptionSection } from './SubscriptionSection';
 import { VendorSettingsSection } from './VendorSettingsSection';
 import { User, CreditCard, Bell, Lock, HelpCircle, LogOut, Users, ShoppingBag } from 'lucide-react';
-import { AppLayout } from '../Layout/AppLayout';
+import { AppLayout } from '../layout/AppLayout';
 import { InviteFriendsPage } from '../Auth/InviteFriendsPage';
 interface ProfilePageProps {
   onCreateTaskClick?: () => void;
