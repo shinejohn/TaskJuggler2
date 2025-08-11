@@ -11,86 +11,21 @@ interface Task {
   isVendorTask?: boolean;
 }
 interface MyTasksViewerPageProps {
+  tasks?: Task[];
   onCreateTaskClick?: () => void;
   onTaskClick?: (taskId: string) => void;
   isVendor?: boolean; // Flag to indicate if the user is a vendor
 }
 export function MyTasksViewerPage({
+  tasks = [],
   onCreateTaskClick,
   onTaskClick,
   isVendor = false // Default to false - user is not a vendor unless specified
 }: MyTasksViewerPageProps) {
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [activeView, setActiveView] = useState<'doers' | 'clients'>('doers');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
-  useEffect(() => {
-    // In a real app, this would be an API call to fetch tasks
-    const fetchTasks = async () => {
-      setLoading(true);
-      try {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        // Mock data
-        const mockTasks: Task[] = [{
-          id: '1',
-          title: 'Website Redesign',
-          description: 'Redesign the company website with modern UI/UX principles',
-          status: 'in_progress',
-          dueDate: '2023-12-15',
-          doerName: 'Alex Johnson',
-          isVendorTask: false
-        }, {
-          id: '2',
-          title: 'Content Creation for Blog',
-          description: 'Create 5 blog posts about industry trends',
-          status: 'pending',
-          dueDate: '2023-12-20',
-          doerName: 'Sarah Miller',
-          isVendorTask: false
-        }, {
-          id: '3',
-          title: 'Social Media Strategy',
-          description: 'Develop a comprehensive social media strategy for Q1',
-          status: 'completed',
-          dueDate: '2023-11-30',
-          doerName: 'Michael Wong',
-          isVendorTask: false
-        }, {
-          id: '4',
-          title: 'Logo Design for Client',
-          description: 'Design a new logo for ABC Corp',
-          status: 'in_progress',
-          dueDate: '2023-12-10',
-          clientName: 'David Chen',
-          isVendorTask: true
-        }, {
-          id: '5',
-          title: 'Marketing Materials',
-          description: 'Create brochures and flyers for upcoming event',
-          status: 'pending',
-          dueDate: '2023-12-25',
-          clientName: 'Emily Rodriguez',
-          isVendorTask: true
-        }, {
-          id: '6',
-          title: 'Website Maintenance',
-          description: 'Monthly website updates and security patches',
-          status: 'completed',
-          dueDate: '2023-11-28',
-          clientName: 'Robert Kim',
-          isVendorTask: true
-        }];
-        setTasks(mockTasks);
-      } catch (error) {
-        console.error('Error fetching tasks:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchTasks();
-  }, []);
   const filteredTasks = tasks.filter(task => {
     // Filter by search query
     const matchesSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase()) || task.description.toLowerCase().includes(searchQuery.toLowerCase());
