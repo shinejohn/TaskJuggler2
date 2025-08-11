@@ -43,3 +43,4 @@ next-env.d.ts
 
 # Step files (optional - remove if you want to track these)
 step*.sh
+package-lock.json
