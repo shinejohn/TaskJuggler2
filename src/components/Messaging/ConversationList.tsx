@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Search, Plus, Filter } from 'lucide-react';
 interface Conversation {

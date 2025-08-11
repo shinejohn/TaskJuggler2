@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { CreditCard, Calendar, Clock, CheckCircle, AlertCircle, Download, Edit, RefreshCw, XCircle } from 'lucide-react';
 interface SubscriptionData {

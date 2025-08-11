@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { UserInfoSection } from './UserInfoSection';
 import { SubscriptionSection } from './SubscriptionSection';

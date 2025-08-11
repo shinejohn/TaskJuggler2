@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useRef } from 'react';
 import { User, Mail, Phone, MapPin, Upload, Save, Edit } from 'lucide-react';
 interface UserData {

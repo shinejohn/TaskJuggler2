@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState, useRef } from 'react';
 import { Paperclip, Send, Mic, Video, Phone, MoreVertical, CheckCircle, DollarSign, Clock, ArrowRight, Image, File, X } from 'lucide-react';
 interface Message {
