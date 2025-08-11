@@ -13,7 +13,7 @@ export default async function MarketplacePage() {
   
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <TaskMarketplace userId={user.id} />
+      <TaskMarketplace />
     </Suspense>
   )
 }
