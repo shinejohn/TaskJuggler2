@@ -21,7 +21,10 @@ export default async function MessagesPage() {
   
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Messaging />
+      <Messaging 
+        onSelectConversation={(id) => console.log('Selected conversation:', id)}
+        onNewMessage={() => console.log('New message')}
+      />
     </Suspense>
   )
 }
