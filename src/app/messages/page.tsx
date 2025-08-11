@@ -21,10 +21,7 @@ export default async function MessagesPage() {
   
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Messaging 
-        initialData={data || []}
-        userId={user.id}
-      />
+      <Messaging />
     </Suspense>
   )
 }
