@@ -4,3 +4,6 @@ export { UserInfoSection } from './UserInfoSection';
 export { VendorProfile } from './VendorProfile';
 export { VendorProfilePage } from './VendorProfilePage';
 export { VendorSettingsSection } from './VendorSettingsSection';
+
+// Export ProfilePage as Profile for compatibility
+export { ProfilePage as Profile } from './ProfilePage';

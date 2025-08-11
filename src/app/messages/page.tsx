@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
 import { Messaging } from '@/components/Messaging'
-import { getMessagessByUser } from '@/lib/supabase/queries/messages.queries'
+import { getMessagesByUser } from '@/lib/supabase/queries/messages.queries'
 import { createServerClient } from '@/lib/supabase/server'
 
 export default async function MessagesPage() {
@@ -12,7 +12,7 @@ export default async function MessagesPage() {
     redirect('/login')
   }
   
-  const { data, error } = await getMessagessByUser(user.id)
+  const { data, error } = await getMessagesByUser(user.id)
   
   if (error) {
     console.error('Error loading messages:', error)

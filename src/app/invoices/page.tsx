@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
 import { Invoice } from '@/components/Invoice'
-import { getInvoicessByUser } from '@/lib/supabase/queries/invoices.queries'
+import { getInvoicesByUser } from '@/lib/supabase/queries/invoices.queries'
 import { createServerClient } from '@/lib/supabase/server'
 
 export default async function InvoicesPage() {
@@ -12,7 +12,7 @@ export default async function InvoicesPage() {
     redirect('/login')
   }
   
-  const { data, error } = await getInvoicessByUser(user.id)
+  const { data, error } = await getInvoicesByUser(user.id)
   
   if (error) {
     console.error('Error loading invoices:', error)
